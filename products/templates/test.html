@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست دسته‌بندی‌ها</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right; /* برای متن‌های فارسی */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>لیست دسته‌بندی‌ها</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ردیف</th>
+                <th>عنوان</th>
+                <th>تصویر</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ forloop.counter }}</td> <!-- شماره ردیف -->
+                    <td>{{ category.title }}</td> <!-- عنوان دسته‌بندی -->
+                    <td>
+                        {% if category.cover %}
+                            <img src="{{ category.cover.url }}" alt="{{ category.title }}">
+                        {% else %}
+                            <span>بدون تصویر</span>
+                        {% endif %}
+                    </td> <!-- تصویر دسته‌بندی -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
