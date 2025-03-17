@@ -1,53 +1,68 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لیست دسته‌بندی‌ها</title>
+    <title>Violet Theme Table</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f0ff; /* Light violet background */
+            color: #4b0082; /* Dark violet text */
+        }
         table {
-            width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            width: 80%;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: right; /* برای متن‌های فارسی */
+            border: 1px solid #d3bfff; /* Soft violet border */
+            padding: 10px;
+            text-align: center;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #7f4ba6; /* Rich violet header */
+            color: white; /* White text for contrast */
         }
-        img {
-            max-width: 100px;
-            height: auto;
+        tr:nth-child(even) {
+            background-color: #e9d8f7; /* Light violet row */
+        }
+        tr:nth-child(odd) {
+            background-color: #f4ebff; /* Slightly lighter violet row */
+        }
+        h1 {
+            text-align: center;
+            color: #4b0082; /* Matching violet header */
         }
     </style>
 </head>
 <body>
-    <h1>لیست دسته‌بندی‌ها</h1>
+    <h1>Violet Theme Table</h1>
     <table>
         <thead>
             <tr>
-                <th>ردیف</th>
-                <th>عنوان</th>
-                <th>تصویر</th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
             </tr>
         </thead>
         <tbody>
-            {% for category in categories %}
-                <tr>
-                    <td>{{ forloop.counter }}</td> <!-- شماره ردیف -->
-                    <td>{{ category.title }}</td> <!-- عنوان دسته‌بندی -->
-                    <td>
-                        {% if category.cover %}
-                            <img src="{{ category.cover.url }}" alt="{{ category.title }}">
-                        {% else %}
-                            <span>بدون تصویر</span>
-                        {% endif %}
-                    </td> <!-- تصویر دسته‌بندی -->
-                </tr>
-            {% endfor %}
+            <tr>
+                <td>Row 1, Cell 1</td>
+                <td>Row 1, Cell 2</td>
+                <td>Row 1, Cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 2, Cell 1</td>
+                <td>Row 2, Cell 2</td>
+                <td>Row 2, Cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 3, Cell 1</td>
+                <td>Row 3, Cell 2</td>
+                <td>Row 3, Cell 3</td>
+            </tr>
         </tbody>
     </table>
 </body>
