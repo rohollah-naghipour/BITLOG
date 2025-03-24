@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from products.models import *
+from django.contrib import messages
 
 
 class ContactPage(TemplateView):
@@ -9,31 +10,59 @@ class ContactPage(TemplateView):
 class AboutPage(TemplateView):
     template_name = 'page-about.html'
 
-class CategoryPage(TemplateView):
-    #template_name = 'category.html'
-    def get(self, request, **kwargs):
-        #category_data = []
-        #titles = Category.objects.all()
-        categories = Category.objects.all()
-        test = []
-        return render(request, 'test.html', {'categories': categories})  
-        #titles = Category.objects.values_list('title', flat=True)
-        #print(titles)
-        #for i in titles:
-            #test.append({
-                #'title': i.title,
-                #'cover': i.cover.url,
-            #})
-        #context = {
-            #'title': t
-        #}
-        #context = {
-                #'title': test,
-        #}
-         
-        #return render(request, 'test.html', context)   
+#def category_summary(request):
+    """Display a list of all Categories"""
+    #categories = Category.objects.all()
+    #context = {"categories":categories}
+    #return render(request, 'category-summary.html', context)
 
+class CategoryPage(TemplateView):
+    def get(self, request, **kwargs):
+        categories = Category.objects.all()
+        return render(request, 'category-summary.html', {'categories': categories})  
+     
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Category, Article
+import re
+
+def category(request, cat):
+    """نمایش مقالات یک دسته‌بندی خاص"""
+    # پردازش عنوان فارسی
+    cat = re.sub(r'[-_]+', ' ', cat).strip().title()
+    
+    try:
+        # جستجو با عنوان فارسی
+        category = Category.objects.get(title__iexact=cat)
+        articles = Article.objects.filter(category=category)
         
+        return render(request, 'category.html', {
+            'category': category,
+            'articles': articles
+        })
+        
+    except Category.DoesNotExist:
+        messages.error(request, f"دسته‌بندی '{cat}' یافت نشد")
+        return render(request, 'category-summary.html')
+
+
+#def category(request, cat):
+    """Refine items to a category"""
+    # Replace hyphens with spaces
+   # cat = cat.replace('-', ' ').title()
+   # print(f"cat after .replace: {cat}")
+    
+   # try:
+       # category =  Category.objects.get(name=cat)
+       # print(category)
+       # Articles =  Article.objects.filter(category=category)
+       # print(Articles)
+       # return render(request, 'category.html', {"category": category,"Articles":Articles})
+   # except:
+       #messages.error(request, ("That category doesn't exist")) 
+       #return render(request, 'category-summary.html')
+           
         
         
 

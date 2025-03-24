@@ -38,32 +38,22 @@
     </style>
 </head>
 <body>
-    <h1>Violet Theme Table</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1, Cell 1</td>
-                <td>Row 1, Cell 2</td>
-                <td>Row 1, Cell 3</td>
-            </tr>
-            <tr>
-                <td>Row 2, Cell 1</td>
-                <td>Row 2, Cell 2</td>
-                <td>Row 2, Cell 3</td>
-            </tr>
-            <tr>
-                <td>Row 3, Cell 1</td>
-                <td>Row 3, Cell 2</td>
-                <td>Row 3, Cell 3</td>
-            </tr>
-        </tbody>
-    </table>
+                    {% for category in categories %}
+                            <article class="col-block">
+
+                                <div class="item-entry" data-aos="zoom-in">
+                                    <div class="item-entry__thumb">
+                                        <a href="single-standard.html" class="item-entry__thumb-link">
+                                            <img src="{{ category.cover }}" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-entry__text">
+                                        <div class="item-entry__cat">
+                                            <a href="category.html">{{ category.title }}</a>
+                                        </div>
+                                    </div> 
+                    </article> <!-- end article -->
+                    {% endfor %}                                                   
 </body>
 </html>
