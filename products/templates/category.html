@@ -1,14 +1,20 @@
 
+
+
 <section class="py-5">
-	<div class="container px-4 px-lg-5 mt-5">
-		<div
-			class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for article in articles %}
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.text }}</p>
-        {% empty %}
-            <p>مقاله‌ای در این دسته‌بندی یافت نشد</p>
-        {% endfor %}
-		</div>
-	</div>
+    {% for article in articles %}
+            <article class="col-block">
+                <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry__thumb">
+                        <img src="{{ article.cover.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="item-entry__text">
+                        <div class="item-entry__cat">
+                            <h4><a href="{% url 'single-article' article.title %}">{{ article.title }}</a></h4>
+                        </div>
+            </article> 
+            {% endfor %}
 </section>
+
+

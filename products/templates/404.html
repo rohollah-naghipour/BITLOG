@@ -1,0 +1,19 @@
+<!-- templates/errors/404.html -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحه یافت نشد</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #d9534f; font-size: 2.5em; }
+        p { font-size: 1.2em; }
+        a { color: #337ab7; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>۴۰۴ - صفحه مورد نظر یافت نشد</h1>
+    <p>{{ message|default:"دسته‌بندی مورد نظر وجود ندارد" }}</p>
+    <a href="{% url 'home' %}">بازگشت به صفحه اصلی</a>
+</body>
+</html>

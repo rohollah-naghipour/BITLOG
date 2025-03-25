@@ -8,8 +8,5 @@ urlpatterns = [
     path("about/", views.AboutPage.as_view(), name='about'),
     path("category-summary/", views.CategoryPage.as_view(), name = 'category-summary'),
     path('category/<str:cat>', views.category, name = 'category'),
+    path('single-article/<str:cat>', views.SingleArticle, name = 'single-article')
 ]
-
-    #path('category/<str:cat>', views.category, name='category'),
-    #path('category-summary/', views.category_summary, name='category-summary'),
-    

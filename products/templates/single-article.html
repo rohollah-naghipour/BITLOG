@@ -1,0 +1,20 @@
+
+
+
+<html>
+<body>    
+<h1>مقالات دسته‌بندی: {{ category.title }}</h1>
+
+<div class="articles">
+    {% for article in articles %}
+        <div class="article">
+            <img src="{{ article.cover.url }}" alt="">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.text }}</p>
+        </div>
+    {% empty %}
+        <p>مقاله‌ای در این دسته‌بندی یافت نشد</p>
+    {% endfor %}
+    </div>
+<body>
+</html>

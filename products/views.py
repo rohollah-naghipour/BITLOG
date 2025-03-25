@@ -47,6 +47,31 @@ def category(request, cat):
         return render(request, 'category-summary.html')
 
 
+def SingleArticle(request, cat):
+    try:
+        cat = re.sub(r'[-_]+', ' ', cat).strip().title()
+
+        articles = Article.objects.filter(title__iexact = cat)
+        return render(request, 'single-article.html', {'articles': articles})
+    
+    except articles.DoesNotExist:
+        return render(request, '404.html', {'message': f"دسته‌بندی '{cat}' یافت نشد"}, status=404)
+
+
+#def SingleArticle(request, cat):
+    #cat = re.sub(r'[-_]+', ' ', cat).strip().title()
+
+    #category = Category.objects.get(title__iexact=cat)
+    #print(category)
+    #articles = Article.objects.filter(category=category)
+    #print(articles)
+    
+    #return render(request, 'single-article.html', {'articles': articles})
+        
+ 
+  
+
+
 #def category(request, cat):
     """Refine items to a category"""
     # Replace hyphens with spaces
