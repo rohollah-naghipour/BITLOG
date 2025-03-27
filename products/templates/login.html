@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به Bitlog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #3236b4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: right;
+        }
+        
+        .login-title {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; 
+            margin-bottom: 20px;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .remember-me input {
+            width: auto;
+            margin-left: 8px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3236b4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-links {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .login-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">ورود به Bitlog</h1>
+        
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="نام کاربری " required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" placeholder="رمز عبور" required>
+            </div>
+            
+            <label class="remember-me">
+                <input type="checkbox">
+                مرا به خاطر بسپار
+            </label>
+            
+            <button type="submit" class="login-button">ورود</button>
+        </form>
+        
+        <div class="login-links">
+            <a href="#">رمز عبور را فراموش کرده‌ام</a> | 
+            <a href="#">ثبت‌نام</a>
+        </div>
+    </div>
+</body>
+</html>

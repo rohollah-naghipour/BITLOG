@@ -1,0 +1,134 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام در Bitlog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #3236b4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .login-title {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #666;
+            outline: none;
+        }
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3236b4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .login-button:hover {
+            background-color: #555;
+        }
+        .login-links {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .login-links a {
+            color: #06165a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">ثبت‌نام در Bitlog</h1>
+        
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="نام کاربری" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" placeholder="نام" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" placeholder="نام خانوادگی" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="email" placeholder="ایمیل" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" placeholder="رمز عبور" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" placeholder="تکرار رمز عبور" required>
+            </div>
+            
+            <button type="submit" class="login-button">ثبت‌نام</button>
+        </form>
+        
+        <div class="login-links">
+            قبلاً حساب کاربری دارید؟ <a href="#">ورود</a>
+        </div>
+    </div>
+</body>
+</html>
