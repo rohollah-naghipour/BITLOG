@@ -10,5 +10,6 @@ urlpatterns = [
     path('category/<str:cat>', views.CategoryView.as_view(), name = 'category'),
     path('single-article/<str:cat>', views.SingleArticle.as_view(), name = 'single-article'),
     path('login/', views.Login.as_view(), name = 'login'),
-    path('register/', views.Register.as_view(), name = 'register'),
+    path('register/', views.register_view, name = 'register'),
+    path('article_create/', views.article_create_update, name = 'article_create_update')
 ]

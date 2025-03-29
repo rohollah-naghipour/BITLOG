@@ -1,13 +1,8 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثبت‌نام در Bitlog</title>
+    <title>Register</title>
+
     <style>
         * {
             margin: 0;
@@ -92,42 +87,57 @@
                 padding: 30px 20px;
             }
         }
+
+
     </style>
+
 </head>
 <body>
     <div class="login-container">
         <h1 class="login-title">ثبت‌نام در Bitlog</h1>
-        
-        <form>
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <div class="input-group">
-                <input type="text" placeholder="نام کاربری" required>
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {{ form.username.errors }}
             </div>
-            
             <div class="input-group">
-                <input type="text" placeholder="نام" required>
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
             </div>
-            
             <div class="input-group">
-                <input type="text" placeholder="نام خانوادگی" required>
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
             </div>
-            
             <div class="input-group">
-                <input type="email" placeholder="ایمیل" required>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
             </div>
-            
             <div class="input-group">
-                <input type="password" placeholder="رمز عبور" required>
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {{ form.password.errors }}
             </div>
-            
-            <div class="input-group">
-                <input type="password" placeholder="تکرار رمز عبور" required>
+           <div class="input-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {{ form.password2.errors }}
             </div>
-            
             <button type="submit" class="login-button">ثبت‌نام</button>
         </form>
-        
         <div class="login-links">
-            قبلاً حساب کاربری دارید؟ <a href="#">ورود</a>
+            <a href="#">قبلاً حساب کاربری دارید؟ ورود</a>
         </div>
     </div>
 </body>
