@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if article %}ویرایش مقاله{% else %}ایجاد مقاله{% endif %}</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #4f68f3;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 800px; 
+        margin: 50px auto;
+        background: white;
+        padding: 30px; 
+        border-radius: 16px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1.form-title {
+        text-align: center;
+        color: #333;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 15px; 
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px; 
+        box-sizing: border-box; 
+        resize: vertical; /
+    }
+    
+    textarea {
+        min-height: 200px; 
+    }
+    
+    input[type="file"] {
+        border: none;
+    }
+    
+    .submit-button {
+        width: 100%;
+        padding: 15px; 
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px; 
+    }
+    
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .cancel-button {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #0d529c;
+        text-decoration: none;
+        font-size: 16px; 
+    }
+    
+    .cancel-button:hover {
+        text-decoration: underline;
+    }
+    
+</style>
+</head>
+
+<body>
+        <h1>ویرایش مقاله: {{ article.title }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">به‌روزرسانی</button>
+</form>
+</body>
+
+</html>

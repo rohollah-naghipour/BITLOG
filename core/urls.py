@@ -16,3 +16,4 @@ if settings.DEBUG:
     urlpatterns += static('contact/static',document_root=settings.STATIC_ROOT)
     urlpatterns += static('about/', document_root=settings.STATIC_ROOT)
     urlpatterns += static('category-summary/', document_root=settings.STATIC_ROOT)
+    urlpatterns += static('article/<int:pk>/delete/', document_root=settings.STATIC_ROOT)

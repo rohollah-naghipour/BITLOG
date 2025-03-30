@@ -23,7 +23,6 @@ class RegistrationForm(UserCreationForm):
         return password2
 
 
-
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article

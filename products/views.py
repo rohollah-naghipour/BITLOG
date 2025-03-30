@@ -1,41 +1,42 @@
-from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
-from django import forms
-from django.contrib.auth import authenticate, login 
-from django.contrib.auth.hashers import check_password
-from django.db.models import Q
-from products.models import *
-from .forms import RegistrationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import ArticleForm
-from .models import Article
+
+from products.forms import ArticleForm
+from products.models import Article
+from users.models import UserProfile
+from products.models import *
+
 import re as r
-from .forms import RegistrationForm
-from django.contrib.auth import login
 
 
-def register_view(request):
-    form = RegistrationForm()
 
+@login_required
+def article_delete(request, pk):
+    article = get_object_or_404(Article, pk=pk)
     if request.method == 'POST':
-        if form.is_valid(): 
+        article.delete()
+        return redirect('home')  
+    return render(request, 'article_delete.html', {'article': article})
+
+
+#user = self.request.user.userprofile
+
+@login_required
+def article_update(request, pk):
+    #print(request.UserProfile)
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
             form.save()
-            print("here")
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            print(username)
-            print(password)
-            user = authenticate(username=username, password=password)
-            print(user)
-            messages.success(request, "ثبت نام با موفقیت انجام شد.")
-            return redirect('home') 
-        else:
-            return render(request, 'register.html', {'form': form})
+            return render(request, 'index.html')   
+            #return redirect('article_detail', pk=pk)   
     else:
-        form = RegistrationForm()
-    return render(request, 'register.html', {'form': form})
+        form = ArticleForm(instance=article)
+    return render(request, 'article_update.html', {'form': form, 'article': article})
+
 
 @login_required
 def article_create_update(request, pk=None):
@@ -56,36 +57,6 @@ def article_create_update(request, pk=None):
     return render(request, 'article_form.html', {'form': form})
 
 
-#def register_view(request):
-    #if request.method == 'POST':
-        #form = RegistrationForm(request.POST)
-        #if form.is_valid():
-            #user = form.save()  # Save the user object
-            #login(request, user)
-            #messages.success(request, "ثبت نام با موفقیت انجام شد.")
-            #return redirect('profile')  # Redirect to profile page or another appropriate page after registration
-        #else:
-            #return render(request, 'register.html', {'form': form})
-    #else:
-        #form = RegistrationForm()
-    #return render(request, 'register.html', {'form': form})
-
-
-
-    #def get(self, request, **kwargs):
-        #if request.method == "POST":
-            #form = register(request.POST)
-            
-            #if form.is_valid():
-                #return redirect("home")
-            #else:
-                #form = register()
-        #return render(request, "register.html", {"form": form})
-
-
-class Login(TemplateView):
-    template_name = 'login.html'
-  
 
 class CategoryPage(TemplateView):
     def get(self, request, **kwargs):
@@ -166,3 +137,19 @@ class ContactPage(TemplateView):
 
 class AboutPage(TemplateView):
     template_name = 'page-about.html'
+
+
+#def register_view(request):
+    #if request.method == 'POST':
+        #form = RegistrationForm(request.POST)
+        #if form.is_valid():
+            #user = form.save()  # Save the user object
+            #login(request, user)
+            #messages.success(request, "ثبت نام با موفقیت انجام شد.")
+            #return redirect('profile')  # Redirect to profile page or another appropriate page after registration
+        #else:
+            #return render(request, 'register.html', {'form': form})
+    #else:
+        #form = RegistrationForm()
+    #return render(request, 'register.html', {'form': form})
+
